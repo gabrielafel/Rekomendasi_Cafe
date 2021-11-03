@@ -23,8 +23,8 @@
     }
     
     function showPosition(position) {
-      x.innerHTML = "Latitude: " + position.coords.latitude +
-      "<br>Longitude: " + position.coords.longitude;
+      alert("Latitude: " + position.coords.latitude +
+      " Longitude: " + position.coords.longitude);
     }
     </script>
 
@@ -65,8 +65,7 @@
             <div class="card-body" style="color: black;">
               <p class="card-text" id="test">Rekomendasi Cafe</p>
               <a href="#" class="btn btn-outline-dark" style="border-color: slategray;">Read More</a>
-              <button onclick="getLocation()">Test</button>
-              <p id="test">Test</p>
+              <button onclick="getLocation()"><%=location%></button>
             </div>
           </div>
         </div>
