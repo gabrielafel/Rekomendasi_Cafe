@@ -1,46 +1,79 @@
 const express = require('express');
-const {Client} = require("@googlemaps/google-maps-services-js");
+const {Client, TravelMode, LocationType, TravelRestriction} = require("@googlemaps/google-maps-services-js");
+const mapsClient = new Client({});
 
 const router = express.Router();
-
-const mapsClient = new Client({});
 
 const APIkey = "AIzaSyDVAXTTu7q3vhRNNeCsR6TciEh1v1XDo6w";
 
 var formattedLocation;
 
-function getLatLngFromAddress(address) {
-  address = address.Replace(' /i', '+');
-  let latLngLocation;
-  mapsClient.geocode({params: {
-    address:address
-  }})
-  .then((r) => {
-     latLngLocation = r.data.results[0].geometry.location.lat+','+r.data.results[0].geometry.location.lng;
-  })
-  .catch((e) => {
-    console.log(e.response.data.error_message);
-  });
+var listCafeJakBar = require("../public/json/ListCafe_JakartaBarat.json");
+const { geocode } = require('@googlemaps/google-maps-services-js/dist/geocode/geocode');
 
-  return latLngLocation;
-}
+var latOrigin = -6.1463852;
+var lngOrigin = 106.8060042;
+const latLngOrigin = {"lat": parseFloat(latOrigin), "lng": parseFloat(lngOrigin)};
 
-mapsClient.geocode({
-  params: {
-    latlng: "-6.1463852,106.8060042",
-    key: APIkey,
-  },
+listCafeJakBar.forEach(element => {
+  var address = element.address;
+  address = address.replace(' ', '+');
+
+  var lat;
+  var lng;
+
+  mapsClient.geocode({
+      params: {
+        address: address,
+        key: APIkey,
+      },
+      timeout: 1000, // milliseconds
+    })
+    .then(r => {
+      lat = r.data.results[0].geometry.location.lat; 
+      lng = r.data.results[0].geometry.location.lng;
+      console.log("Pass");
+    })
+    .catch(e => {
+      console.log(e.response.data.error_message);
+    });
+
+    const latLngDestination = {"lat": parseFloat(lat), "lng": parseFloat(lng)};
+    
+    mapsClient.distancematrix({
+      params: {
+        origins: [latLngDestination
+        ], 
+        destinations: [
+          latLngDestination
+        ], 
+        mode: TravelMode['driving'], 
+      key: APIkey,
+      }, 
   timeout: 1000, // milliseconds
-})
-.then((r) => {
-  formattedLocation = r.data.results[0].formatted_address;
-})
-.catch((e) => {
-  console.log(e.response.data.error_message);
+  })
+    .then(response => {
+      console.log(response.data.rows[0].elements[0].distance.text)
+    })
+    .catch(e => {
+      console.log(e.response.data.error_message);
+    });
 });
 
-var listCafeJakBar = require("../public/json/ListCafe_JakartaBarat.json");
-console.log(getLatLngFromAddress(listCafeJakBar[0]));
+
+// mapsClient.geocode({
+//   params: {
+//     latlng: "-6.1463852,106.8060042",
+//     key: APIkey,
+//   },
+//   timeout: 1000, // milliseconds
+// })
+// .then((r) => {
+//   formattedLocation = r.data.results[0].formatted_address;
+// })
+// .catch((e) => {
+//   console.log(e.response.data.error_message);
+// });
 
 //abis login pindah home
 router.get("/", (req, res) =>
