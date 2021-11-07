@@ -15,50 +15,50 @@ var latOrigin = -6.1463852;
 var lngOrigin = 106.8060042;
 const latLngOrigin = {"lat": parseFloat(latOrigin), "lng": parseFloat(lngOrigin)};
 
-listCafeJakBar.forEach(element => {
-  var address = element.address;
-  address = address.replace(' ', '+');
+// listCafeJakBar.forEach(element => {
+//   var address = element.address;
+//   address = address.replace(' ', '+');
 
-  var lat;
-  var lng;
+//   var lat;
+//   var lng;
 
-  mapsClient.geocode({
-      params: {
-        address: address,
-        key: APIkey,
-      },
-      timeout: 1000, // milliseconds
-    })
-    .then(r => {
-      lat = r.data.results[0].geometry.location.lat; 
-      lng = r.data.results[0].geometry.location.lng;
-      console.log("Pass");
-    })
-    .catch(e => {
-      console.log(e.response.data.error_message);
-    });
+//   mapsClient.geocode({
+//       params: {
+//         address: address,
+//         key: APIkey,
+//       },
+//       timeout: 1000, // milliseconds
+//     })
+//     .then(r => {
+//       lat = r.data.results[0].geometry.location.lat; 
+//       lng = r.data.results[0].geometry.location.lng;
+//       console.log("Pass");
+//     })
+//     .catch(e => {
+//       console.log(e.response.data.error_message);
+//     });
 
-    const latLngDestination = {"lat": parseFloat(lat), "lng": parseFloat(lng)};
+//     const latLngDestination = {"lat": parseFloat(lat), "lng": parseFloat(lng)};
     
-    mapsClient.distancematrix({
-      params: {
-        origins: [latLngDestination
-        ], 
-        destinations: [
-          latLngDestination
-        ], 
-        mode: TravelMode['driving'], 
-      key: APIkey,
-      }, 
-  timeout: 1000, // milliseconds
-  })
-    .then(response => {
-      console.log(response.data.rows[0].elements[0].distance.text)
-    })
-    .catch(e => {
-      console.log(e.response.data.error_message);
-    });
-});
+//     mapsClient.distancematrix({
+//       params: {
+//         origins: [latLngDestination
+//         ], 
+//         destinations: [
+//           latLngDestination
+//         ], 
+//         mode: TravelMode['driving'], 
+//       key: APIkey,
+//       }, 
+//   timeout: 1000, // milliseconds
+//   })
+//     .then(response => {
+//       console.log(response.data.rows[0].elements[0].distance.text)
+//     })
+//     .catch(e => {
+//       console.log(e.response.data.error_message);
+//     });
+// });
 
 
 // mapsClient.geocode({
@@ -79,6 +79,15 @@ listCafeJakBar.forEach(element => {
 router.get("/", (req, res) =>
   res.render("pages/home", { location:formattedLocation})
 );
+
+router.get("/bantuan", (req, res) => 
+  res.render("pages/bantuan"));
+
+router.get("/cafejakarta", (req, res) => 
+  res.render("pages/cafejakarta"));
+
+router.get("/rekomendasi", (req, res) => 
+  res.render("pages/rekomendasi"));
 
 router.get("/test", (req, res) => 
   res.render("pages/test"));
