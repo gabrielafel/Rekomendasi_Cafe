@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <!-- <style>
+      body{
+        background-image: url(image/background/bghome.jpg);
+      }
+    </style> -->
+    <title>Data Cafe</title>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+      <div class="container">
+        <ul class="navbar-nav ml-1 mr-1 nav-fill">
+          <li class="nav-item active">
+            <a class="nav-link text-white" href="/" style="margin-left: 10px; margin-right: 10px;">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link text-white" href="/search" style="margin-left: 10px; margin-right: 10px;">Cafe di Jakarta</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link text-white" href="/rekomendasi" style="margin-left: 10px; margin-right: 10px;">Rekomendasi Cafe</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link text-white" href="/bantuan" style="margin-left: 10px; margin-right: 10px;">Bantuan</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link text-white" href="/about" style="margin-left: 10px; margin-right: 10px;">About Us</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link text-white" href="/admin" style="margin-left: 10px; margin-right: 10px;">Admin</a>
+          </li>
+        </ul>
+      </div>
+    </nav> 
+    <form method="POST">
+        <label for="nama" style="margin-top: 10px; margin-left: 10px;">Nama Cafe: 
+        </label>
+        <input type="text" name="nama" id="nama" style="margin-top: 10px;" value="<%= cafe.Nama %>"/>
+        <br>
+        <label for="address" style="margin-top: 10px; margin-left: 10px;">Address: 
+        </label>
+        <input type="text" name="address" id="address" style="margin-top: 10px;" value="<%= cafe.Address %>"/>
+        <br>
+        <label for="cost" style="margin-top: 10px; margin-left: 10px;">Cost for two: 
+        </label>
+        <input type="text" name="cost" id="cost" style="margin-top: 10px;" value="<%= cafe["Cost for two"] %>"/>
+        <br>
+        <label for="hours" style="margin-top: 10px; margin-left: 10px;">Hours: 
+        </label>
+        <input type="text" name="hours" id="hours" style="margin-top: 10px;" value="<%= cafe.Hours %>"/>
+        <br>
+        <label for="moreinfo" style="margin-top: 10px; margin-left: 10px;">More Info: 
+        </label>
+        <div style="margin-left: 10px;">
+            Wifi: <input type="checkbox" id="wifi" name="wifi" value="wifi" <% if (cafe['More Info'] &&
+              cafe['More Info'].includes("Wifi") ) { %> checked <% } %>><br>
+            Smoking area: <input type="checkbox" id="smoking" name="smoking" value="smoking" <% if (cafe['More Info'] &&
+              cafe['More Info'].includes("Smoking Area") ) { %> checked <% } %>><br>
+            Indoor seating: <input type="checkbox" id="indoor" name="indoor" value="indoor" <% if (cafe['More Info'] &&
+              cafe['More Info'].includes("Indoor Seating") ) { %> checked <% } %>><br>
+            Outdoor seating: <input type="checkbox" id="outdoor" name="outdoor" value="outdoor" <% if (cafe['More Info'] &&
+              cafe['More Info'].includes("Outdoor Seating") ) { %> checked <% } %>><br>
+            Free parking: <input type="checkbox" id="parking" name="parking" value="parking" <% if (cafe['More Info'] &&
+              cafe['More Info'].includes("Free Parking") ) { %> checked <% } %>><br>
+            Valet parking: <input type="checkbox" id="valet" name="valet" value="valet" <% if (cafe['More Info'] &&
+              cafe['More Info'].includes("Valet Parking Available") ) { %> checked <% } %>><br>
+            Takeaway: <input type="checkbox" id="takeaway" name="takeaway" value="takeaway" <% if (cafe['More Info'] &&
+              cafe['More Info'].includes("Takeaway Available") ) { %> checked <% } %>><br>
+            Home delivery: <input type="checkbox" id="delivery" name="delivery" value="delivery" <% if (cafe['More Info'] &&
+              cafe['More Info'].includes("Home Delivery") ) { %> checked <% } %>><br>
+            Table booking: <input type="checkbox" id="table" name="table" value="table" <% if (cafe['More Info'] &&
+              cafe['More Info'].includes("Table booking recommended") ) { %> checked <% } %>><br>
+          </div>
+        <br>
+        <button type="submit" style="margin-left: 10px;">Update</button>
+    </form>
+    
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/treant-js/1.0/Treant.min.js" integrity="sha512-ADpWKsaOuAegRSoUObE1si2VF6HQJyQR3Zy44l7s6YsGA6BnPIrIwN9uKJ0rsMhtDAMFqnGZhQXMJcsWSp40pA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.3.0/raphael.min.js" integrity="sha512-tBzZQxySO5q5lqwLWfu8Q+o4VkTcRGOeQGVQ0ueJga4A1RKuzmAu5HXDOXLEjpbKyV7ow9ympVoa6wZLEzRzDg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/treant-js/1.0/Treant.css" integrity="sha512-ySoXPqkgXC7K7IS5vOdi47uEpct2yJ3MkYVVVHiM7FOmdDnBUVSmB/D1ps2Pf6jBJnBMyh1EPJLpWh2uCzOLdg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <style>
+        body{
+            background-color: rgb(255, 147, 71);
+        }
+    </style>
+    <title>Algoritma C4.5</title>
+</head>
+    
+<body>
+        <h2 style="text-align: center;"> DECISION TREE <br> <%= cafe.Nama %> </h2>
+        <div class="chart" id="OrganiseChart-simple">
+        </div>
+        
+        <script>
+          var simple_chart_config = {
+              chart: {
+                  container: "#OrganiseChart-simple"
+              },
+    
+              nodeStructure: <%- decisionTree %>
+          }
+    
+          new Treant(simple_chart_config);
+        </script>
+</body>
+</html>
+

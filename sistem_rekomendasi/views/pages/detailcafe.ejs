@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/treant-js/1.0/Treant.min.js" integrity="sha512-ADpWKsaOuAegRSoUObE1si2VF6HQJyQR3Zy44l7s6YsGA6BnPIrIwN9uKJ0rsMhtDAMFqnGZhQXMJcsWSp40pA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.3.0/raphael.min.js" integrity="sha512-tBzZQxySO5q5lqwLWfu8Q+o4VkTcRGOeQGVQ0ueJga4A1RKuzmAu5HXDOXLEjpbKyV7ow9ympVoa6wZLEzRzDg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/treant-js/1.0/Treant.css" integrity="sha512-ySoXPqkgXC7K7IS5vOdi47uEpct2yJ3MkYVVVHiM7FOmdDnBUVSmB/D1ps2Pf6jBJnBMyh1EPJLpWh2uCzOLdg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <title>Detail Cafe</title>
+    <style>
+    .gradient {
+        max-width: 100%;
+        width: 100%;
+        left: 0;
+        bottom: 0;
+        background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5) 10%);
+    }
+    body{
+      background-color: rgb(252, 216, 249);
+    }
+    </style>
+    
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+      <div class="container">
+        <ul class="navbar-nav ml-1 mr-1 nav-fill">
+          <li class="nav-item active">
+            <a class="nav-link text-white" href="/" style="margin-left: 10px; margin-right: 10px;">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link text-white" href="/search" style="margin-left: 10px; margin-right: 10px;">Cafe di Jakarta</a>
+          </li> 
+          <li class="nav-item active">
+            <a class="nav-link text-white" href="/rekomendasi" style="margin-left: 10px; margin-right: 10px;">Rekomendasi Cafe</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link text-white" href="/bantuan" style="margin-left: 10px; margin-right: 10px;">Bantuan</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link text-white" href="/about" style="margin-left: 10px; margin-right: 10px;">About Us</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link text-white" href="/admin" style="margin-left: 10px; margin-right: 10px;">Admin</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container">
+        <div id="carouselExampleControls" style="max-height: 500px;" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner" style="max-height: 500px;">
+              <div class="carousel-item active">
+                <img class="d-block w-100" style="max-height: 500px; object-fit: fill;" src="/cafe/images/<%= cafe.imagesurl[0] %>" alt="First slide">
+                <div class="carousel-caption d-md-block gradient">
+                    <h1><%= cafe.Nama %></h1>
+                </div>
+            </div>
+              <% for (i in cafe.imagesurl) { if (i != 0) { %>
+                <div class="carousel-item">
+                    <img class="d-block w-100" style="max-height: 500px; object-fit: fill;" src="/cafe/images/<%= cafe.imagesurl[i] %>">
+                    <div class="carousel-caption d-md-block gradient">
+                      <h1><%= cafe.Nama %></h1>
+                    </div>
+                  </div>
+              <% } } %>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="container">
+                    <div class="row">
+                      <a type="button" class="btn btn-primary" href="/algoc45/<%= cafe.id %>" style="margin-top: 20px; margin-left: 15px;">DECISION TREE</a>
+                        <div class="col-md-12">
+                            <div class="card-body" style="background-color:lightblue; height: 150px; margin-top: 30px;">
+                                <h5 class="card-title">Address</h5>
+                                <p class="card-text"><%= cafe.Address %></p>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm">
+                            <div class="card-body" style="background-color:rgb(252, 168, 135); width: 300px; height: 150px; margin-top: 30px;">
+                                <h5 class="card-title">Cost for two</h5>
+                                <p class="card-text"><%= cafe["Cost for two"] %></p>
+                            </div>
+                        </div>
+                        <div class="col-sm">
+                            <div class="card-body" style="background-color:rgb(169, 247, 169); width: 300px; height: 150px; margin-top: 30px;">
+                                <h5 class="card-title">Cafe Hours</h5>
+                                <p class="card-text"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-alarm" viewBox="0 0 16 16">
+                                    <path d="M8.5 5.5a.5.5 0 0 0-1 0v3.362l-1.429 2.38a.5.5 0 1 0 .858.515l1.5-2.5A.5.5 0 0 0 8.5 9V5.5z"/>
+                                    <path d="M6.5 0a.5.5 0 0 0 0 1H7v1.07a7.001 7.001 0 0 0-3.273 12.474l-.602.602a.5.5 0 0 0 .707.708l.746-.746A6.97 6.97 0 0 0 8 16a6.97 6.97 0 0 0 3.422-.892l.746.746a.5.5 0 0 0 .707-.708l-.601-.602A7.001 7.001 0 0 0 9 2.07V1h.5a.5.5 0 0 0 0-1h-3zm1.038 3.018a6.093 6.093 0 0 1 .924 0 6 6 0 1 1-.924 0zM0 3.5c0 .753.333 1.429.86 1.887A8.035 8.035 0 0 1 4.387 1.86 2.5 2.5 0 0 0 0 3.5zM13.5 1c-.753 0-1.429.333-1.887.86a8.035 8.035 0 0 1 3.527 3.527A2.5 2.5 0 0 0 13.5 1z"/>
+                                  </svg>
+                                <%= cafe.Hours %></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-4">
+                <!-- more info -->
+                <div class="card" style="width: 18rem; margin-top: 20px; margin-bottom: 10px;">
+                    <div class="card-header"> More Info
+                    </div>
+                    <ul class="list-group list-group-flush">
+                      <% if(cafe["More Info"].includes("Wifi")){ %>
+                        <li class="list-group-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-wifi" viewBox="0 0 16 16">
+                            <path d="M15.384 6.115a.485.485 0 0 0-.047-.736A12.444 12.444 0 0 0 8 3C5.259 3 2.723 3.882.663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.716 2.164.205.148.49.13.668-.049z"/>
+                            <path d="M13.229 8.271a.482.482 0 0 0-.063-.745A9.455 9.455 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.576 1.336c.206.132.48.108.653-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.473 6.473 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.407.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.61-.091l.016-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .707 0l.707-.707z"/>
+                          </svg>
+                          Wifi Available</li>
+                    <% } %> 
+
+                    <% if(cafe["More Info"].includes("Smoking Area")){ %>
+                        <li class="list-group-item">
+                        <img src="/image/smoking.png" width="30px " height="30px">
+                          Smoking Area</li>
+                    <% } %> 
+
+                    <% if(cafe["More Info"].includes("Indoor Seating")){ %>
+                        <li class="list-group-item">
+                            <img src="/image/indoor.png" width="30px " height="30px">
+                          Indoor Seating</li>
+                    <% } %> 
+
+                    <% if(cafe["More Info"].includes("Outdoor Seating")){ %>
+                        <li class="list-group-item">
+                            <img src="/image/outdoor.png" width="30px " height="30px">
+                          Outdoor Seating</li>
+                    <% } %> 
+                    
+                    <% if(cafe["More Info"].includes("Free Parking")){ %>
+                        <li class="list-group-item">
+                            <img src="/image/parking.png" width="30px " height="30px">
+                          Free Parking</li>
+                    <% } %> 
+
+                    <% if(cafe["More Info"].includes("Valet Parking Available")){ %>
+                        <li class="list-group-item">
+                            <img src="/image/valet.png" width="30px " height="30px">
+                          Valet Parking</li>
+                    <% } %> 
+
+                    <% if(cafe["More Info"].includes("Takeaway Available")){ %>
+                        <li class="list-group-item">
+                            <img src="/image/takeaway.png" width="30px " height="30px">
+                          Takeaway</li>
+                    <% } %>
+
+                    <% if(cafe["More Info"].includes("Home Delivery")){ %>
+                        <li class="list-group-item">
+                            <img src="/image/homedel.png" width="30px " height="30px">
+                          Home Delivery</li>
+                    <% } %>
+
+                    <% if(cafe["More Info"].includes("Table booking recommended")){ %>
+                        <li class="list-group-item">
+                            <img src="/image/booking.png" width="30px " height="30px">
+                          Table booking</li>
+                    <% } %>
+
+                    </ul>
+                  </div>
+                               
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

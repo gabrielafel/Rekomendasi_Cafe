@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/paginationjs@2.1.5/dist/pagination.min.js"
+    integrity="sha256-c3ZuGOHCmmMhPJlzMcCMogPfs0n1+cpQLeSD4rZTylg=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/paginationjs@2.1.5/dist/pagination.css"
+    integrity="sha256-fFqxRJ9q487bQTOBfn4T8jkJt8IGlrVzTeauNnuRHVA=" crossorigin="anonymous">
+    <style>
+      body{
+        background-image: url(image/background/bghelp.jpg);
+      }
+    </style>
+    <title>Rekomendasi Cafe</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+    <div class="container">
+      <ul class="navbar-nav ml-1 mr-1 nav-fill">
+        <li class="nav-item active">
+          <a class="nav-link text-white" href="/" style="margin-left: 10px; margin-right: 10px;">Home <span
+              class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link text-white" href="/search" style="margin-left: 10px; margin-right: 10px;">Cafe di
+            Jakarta</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link text-white" href="/rekomendasi" style="margin-left: 10px; margin-right: 10px;">Rekomendasi
+            Cafe</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link text-white" href="/bantuan" style="margin-left: 10px; margin-right: 10px;">Bantuan</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link text-white" href="/about" style="margin-left: 10px; margin-right: 10px;">About Us</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link text-white" href="/admin" style="margin-left: 10px; margin-right: 10px;">Admin</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <h1 style="text-align: center; margin-top: 20px; margin-bottom: 20px;"> REKOMENDASI CAFE </h1>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-xs">
+        <div>
+          Wifi: <input type="checkbox" id="wifi" name="wifi" value="wifi" <% if (locals.query.wifi &&
+            locals.query.wifi=='true' ) { %> checked <% } %>><br>
+            Smoking Area: <input type="checkbox" id="smoking" name="smoking" value="smoking" <% if (locals.query.smoking
+              && locals.query.smoking=='true' ) { %> checked <% } %>><br>
+              Indoor Seating: <input type="checkbox" id="indoor" name="indoor" value="indoor" <% if (locals.query.indoor
+                && locals.query.indoor=='true' ) { %> checked <% } %>><br>
+                Outdoor Seating: <input type="checkbox" id="outdoor" name="outdoor" value="outdoor" <% if
+                  (locals.query.outdoor && locals.query.outdoor=='true' ) { %> checked <% } %>><br>
+                  Free Parking: <input type="checkbox" id="parking" name="parking" value="parking" <% if
+                    (locals.query.parking && locals.query.parking=='true' ) { %> checked <% } %>><br>
+                    Valet Parking: <input type="checkbox" id="valet" name="valet" value="valet" <% if
+                      (locals.query.valet && locals.query.valet=='true' ) { %> checked <% } %>><br>
+                      Takeaway: <input type="checkbox" id="takeaway" name="takeaway" value="takeaway" <% if
+                        (locals.query.takeaway && locals.query.takeaway=='true' ) { %> checked <% } %>><br>
+                        Home Delivery: <input type="checkbox" id="delivery" name="delivery" value="delivery" <% if
+                          (locals.query.delivery && locals.query.delivery=='true' ) { %> checked <% } %>><br>
+                          Table booking: <input type="checkbox" id="table" name="table" value="table" <% if
+                            (locals.query.booking && locals.query.booking=='true' ) { %> checked <% } %>><br>
+                          Harga: <input type="number" id="harga" name="harga" value="<%= locals.query.harga %>"/>
+                            <input type="checkbox" id="price" name="price" value="price" <% if
+                            (locals.query.price && locals.query.price=='true' ) { %> checked <% } %> /><br>
+                          Filtering: <input type="checkbox" id="filtering" name="filtering" value="filtering" <% if 
+                            (locals.query.filtering && locals.query.filtering=='true') { %> checked <% } %>><br>
+                            <input type="submit" value="Continue" onclick="openRecommendation()" />
+        </div>
+      </div>
+      <div class="col-lg">
+        <% if (locals.message) { %>
+          <%= locals.message %>
+            <% } %>
+              <% if (locals.availablePages && parseFloat(locals.availablePages)> 0) { %>
+                <div id="pagination">
+                  <% for (let i=0; i < 10; i++) { %>
+                    <div id="cafe<%= i %>"></div>
+                    <% } %>
+                </div>
+                <% } %>
+      </div>
+      <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <script>
+    let latitude = 0;
+    let longitude = 0;
+
+    navigator.geolocation.getCurrentPosition(getLatLon);
+    function getLatLon(position) {
+      latitude = position.coords.latitude;
+      longitude = position.coords.longitude;
+    }
+
+    <% if (locals.availablePages && parseFloat(locals.availablePages) > 0) { %>
+      datas =[
+      <% for (i in finalList) { %>
+        `<div class='media'>
+          <img class='mr-3' src='/cafe/images/<%= finalList[i].imagesurl %>' alt='Generic placeholder image'
+            style='width: 5cm;height: 5cm;'>
+          <div class='media-body'>
+            <h5 class='mt-0'>
+              <a href="/detailcafe/<%= finalList[i]["id"] %>"><%= finalList[i].Nama %></a>
+            </h5>
+            <p>Address: <%= finalList[i].Address %> <br>
+                Jarak: <%= finalList[i].distance.toFixed(3) %> Km
+            </p>
+
+          </div>
+        </div>`
+        <% if (i != finalList.length - 1) { %> 
+        ,
+        <% } %>
+      <% } %>
+    ];
+  
+      $('#pagination').pagination({
+        dataSource: datas,
+        pageSize: 10,
+        showPrevious: false,
+        showNext: false,
+        callback: function (data, pagination) {
+          // template method of yourself
+          var html = data;
+          console.log(data);
+          for (let i = 0; i < 10; i++) {
+            if (i < data.length) {
+              $('#cafe' + i).html(data[i]);
+            } else {
+              $('#cafe' + i).html('');
+            }
+          }
+        }
+      });
+    <% } %>
+
+      function openRecommendation() {
+        if (latitude == 0 || longitude == 0) {
+          alert("Please allow location access");
+        } else {
+          wifi = $('#wifi').prop('checked');
+          smoking = $('#smoking').prop('checked');
+          indoor = $('#indoor').prop('checked');
+          outdoor = $('#outdoor').prop('checked');
+          parking = $('#parking').prop('checked');
+          valet = $('#valet').prop('checked');
+          takeaway = $('#takeaway').prop('checked');
+          delivery = $('#delivery').prop('checked');
+          booking = $('#table').prop('checked');
+          harga = $('#harga').prop('value');
+          price = $('#price').prop('checked');
+          filtering = $('#filtering').prop('checked');
+
+          url = "/rekomendasi?wifi=" + wifi + "&smoking=" + smoking + "&indoor=" + indoor + "&outdoor=" + outdoor + "&parking=" + parking + "&valet=" + valet + "&takeaway=" + takeaway + "&delivery=" + delivery + "&booking=" + booking+ "&harga=" + harga + "&price=" + price + "&filtering=" + filtering + "&lat=" + latitude + "&lon=" + longitude;
+          window.location.replace(url);
+        }
+      }
+  </script>
+</body>
+
+</html>
