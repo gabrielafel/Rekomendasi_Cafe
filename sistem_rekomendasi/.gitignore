@@ -127,4 +127,4 @@ dist
 .pnp.*
 
 public/cafe/images
-public/image
+#public/image
