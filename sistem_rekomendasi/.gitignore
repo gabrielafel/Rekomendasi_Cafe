@@ -126,5 +126,7 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
-public/cafe/images
+#public/cafe/images
+
+#udah
 #public/image
