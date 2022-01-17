@@ -1,13 +1,8 @@
 const express = require('express');
-// const { Client, TravelMode, LocationType, TravelRestriction } = require("@googlemaps/google-maps-services-js");
-// const mapsClient = new Client({});
-
 const axios = require('axios');
 const { query } = require('express');
 
 const router = express.Router();
-
-const APIkey = "AIzaSyDVAXTTu7q3vhRNNeCsR6TciEh1v1XDo6w";
 
 var formattedLocation;
 
@@ -22,68 +17,6 @@ const latLngOrigin = {
 
 const fs = require('fs');
 const { json } = require('body-parser');
-
-//buat decision tree
-
-// url = 'https://maps.googleapis.com/maps/api/geocode/json'
-
-// var good = require('./../public/cafe/json2/Jakarta_.json');
-// var obj = []
-
-// const {
-//   promiseImpl
-// } = require('ejs');
-// console.log(good.length)
-// async function fillData() {
-//   for (let i = 0; i < good.length; i++) {
-//     const timer = ms => new promiseImpl(res => setTimeout(res, ms));
-//     addr = encodeURIComponent(good[i].Address.replace('.', '').replace(',', ''))
-//     console.log(addr)
-//     try{
-//       let t = await axios.get(url, {
-//         params: {
-//           address: addr,
-//           key: APIkey
-//         }
-//       });
-  
-//       results = t.data.results
-//       if (results.length > 0) {
-//         good[i]['lat'] = results[0].geometry.location.lat
-//         good[i]['long'] = results[0].geometry.location.lng
-//         obj.push(good[i])
-//         console.log(good[i])
-//       }
-//     }
-
-//     catch{
-//     }
-
-//     if (i == good.length - 1) {
-//       str = JSON.stringify(obj, null, '\t');
-//       fs.writeFileSync("CafeJakarta.json", str);
-//     }
-
-//     await timer(100)
-//     console.log(i)
-//   }
-// }
-// fillData();
-
-
-// buat id detail
-
-// idAwal = 0;
-// jsonF = require('./../CafeJakarta.json');
-// for (let i = 0; i < jsonF.length; i++){
-//   jsonF[i]["id"] = idAwal+i;
-// }
-// str = JSON.stringify(jsonF, null, '\t');
-// fs.writeFileSync("CafeJakarta.1.json", str);
-// idAwal += jsonF.length
-
-
-//abis login pindah home
 
 let itemsPerPage = 10;
 router.get("/", (req, res) =>
