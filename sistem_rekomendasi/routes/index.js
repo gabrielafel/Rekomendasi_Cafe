@@ -524,7 +524,7 @@ router.post("/admin", (req, res, next) => {
     let username = req.body.admin;
     let password = req.body.password;
 
-    if (username == "admin" && password == "admin"){
+    if (username == "adminGaby" && password == "adminGaby"){
       res.redirect("/datacafe");
     }
     else{
