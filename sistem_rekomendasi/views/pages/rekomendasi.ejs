@@ -64,29 +64,29 @@
     <div class="row">
       <div class="col-xs">
         <div>
-          Wifi: <input type="checkbox" id="wifi" name="wifi" value="wifi" <% if (locals.query.wifi &&
-            locals.query.wifi=='true' ) { %> checked <% } %>><br>
-            Smoking Area: <input type="checkbox" id="smoking" name="smoking" value="smoking" <% if (locals.query.smoking
-              && locals.query.smoking=='true' ) { %> checked <% } %>><br>
-              Indoor Seating: <input type="checkbox" id="indoor" name="indoor" value="indoor" <% if (locals.query.indoor
-                && locals.query.indoor=='true' ) { %> checked <% } %>><br>
-                Outdoor Seating: <input type="checkbox" id="outdoor" name="outdoor" value="outdoor" <% if
-                  (locals.query.outdoor && locals.query.outdoor=='true' ) { %> checked <% } %>><br>
-                  Free Parking: <input type="checkbox" id="parking" name="parking" value="parking" <% if
-                    (locals.query.parking && locals.query.parking=='true' ) { %> checked <% } %>><br>
-                    Valet Parking: <input type="checkbox" id="valet" name="valet" value="valet" <% if
-                      (locals.query.valet && locals.query.valet=='true' ) { %> checked <% } %>><br>
-                      Takeaway: <input type="checkbox" id="takeaway" name="takeaway" value="takeaway" <% if
-                        (locals.query.takeaway && locals.query.takeaway=='true' ) { %> checked <% } %>><br>
-                        Home Delivery: <input type="checkbox" id="delivery" name="delivery" value="delivery" <% if
-                          (locals.query.delivery && locals.query.delivery=='true' ) { %> checked <% } %>><br>
-                          Table booking: <input type="checkbox" id="table" name="table" value="table" <% if
-                            (locals.query.booking && locals.query.booking=='true' ) { %> checked <% } %>><br>
-                          Harga: <input type="number" id="harga" name="harga" style="width: 2cm;" value="<%= locals.query.harga %>"/>
+          <input type="checkbox" id="wifi" name="wifi" value="wifi" <% if (locals.query.wifi &&
+          locals.query.wifi=='true' ) { %> checked <% } %>> Wifi <br>
+            <input type="checkbox" id="smoking" name="smoking" value="smoking" <% if (locals.query.smoking
+              && locals.query.smoking=='true' ) { %> checked <% } %>> Smoking area <br>
+              <input type="checkbox" id="indoor" name="indoor" value="indoor" <% if (locals.query.indoor
+                && locals.query.indoor=='true' ) { %> checked <% } %>> Indoor Seating <br>
+                <input type="checkbox" id="outdoor" name="outdoor" value="outdoor" <% if
+                  (locals.query.outdoor && locals.query.outdoor=='true' ) { %> checked <% } %>> Outdoor Seating <br>
+                  <input type="checkbox" id="parking" name="parking" value="parking" <% if
+                    (locals.query.parking && locals.query.parking=='true' ) { %> checked <% } %>> Free Parking <br>
+                    <input type="checkbox" id="valet" name="valet" value="valet" <% if
+                      (locals.query.valet && locals.query.valet=='true' ) { %> checked <% } %>> Valet Parking <br>
+                      <input type="checkbox" id="takeaway" name="takeaway" value="takeaway" <% if
+                        (locals.query.takeaway && locals.query.takeaway=='true' ) { %> checked <% } %>> Takeaway <br>
+                        <input type="checkbox" id="delivery" name="delivery" value="delivery" <% if
+                          (locals.query.delivery && locals.query.delivery=='true' ) { %> checked <% } %>> Home Delivery <br>
+                          <input type="checkbox" id="table" name="table" value="table" <% if
+                            (locals.query.booking && locals.query.booking=='true' ) { %> checked <% } %>> Table booking <br>
                             <input type="checkbox" id="price" name="price" value="price" <% if
-                            (locals.query.price && locals.query.price=='true' ) { %> checked <% } %> /><br>
-                          Filtering: <input type="checkbox" id="filtering" name="filtering" value="filtering" <% if 
-                            (locals.query.filtering && locals.query.filtering=='true') { %> checked <% } %>><br>
+                            (locals.query.price && locals.query.price=='true' ) { %> checked <% } %> /> 
+                            Harga maksimal: <input type="number" id="harga" name="harga" style="width: 2cm;" value="<%= locals.query.harga %>"/><br>
+                          <input type="checkbox" id="filtering" name="filtering" value="filtering" <% if 
+                            (locals.query.filtering && locals.query.filtering=='true') { %> checked <% } %>> Filtering <br>
                             <input type="submit" value="Continue" onclick="openRecommendation()" />
         </div>
       </div>
