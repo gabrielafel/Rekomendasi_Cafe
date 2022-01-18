@@ -84,7 +84,7 @@
                             (locals.query.booking && locals.query.booking=='true' ) { %> checked <% } %>> Table booking <br>
                             <input type="checkbox" id="price" name="price" value="price" <% if
                             (locals.query.price && locals.query.price=='true' ) { %> checked <% } %> /> 
-                            Harga maksimal: <input type="number" id="harga" name="harga" style="width: 2cm;" value="<%= locals.query.harga %>"/><br>
+                            Harga maksimal 2 orang: <input type="number" id="harga" name="harga" style="width: 2cm;" value="<%= locals.query.harga %>"/><br>
                           <input type="checkbox" id="filtering" name="filtering" value="filtering" <% if 
                             (locals.query.filtering && locals.query.filtering=='true') { %> checked <% } %>> Filtering <br>
                             <input type="submit" value="Continue" onclick="openRecommendation()" />
